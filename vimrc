@@ -30,6 +30,7 @@ call vundle#begin()
     Plugin 'scrooloose/nerdtree'                " Project and file navigation
     " Plugin 'majutsushi/tagbar'                  " Class/module browser
     Plugin 'kien/ctrlp.vim'                     " Fast transitions on project files
+    Plugin 'tpope/vim-fugitive'
 
     "-------------------=== Other ===-------------------------------
     Plugin 'bling/vim-airline'                  " Lean & mean status/tabline for vim
@@ -66,6 +67,8 @@ call vundle#begin()
 
     "-------------------=== 
     Plugin 'tpope/vim-markdown'
+    
+    Plugin 'mhinz/vim-startify'
 
 call vundle#end()                           " required
 
@@ -110,6 +113,8 @@ set exrc                                    " enable usage of additional .vimrc 
 set secure                                  " prohibit .vimrc files to execute shell, create files, etc...
 
 syntax enable
+set t_Co=256
+
 " set background=dark
 " colorscheme solarized
 " let g:solarized_termcolors=256
@@ -168,14 +173,85 @@ set guifont=Menlo\ Regular:h18
 "=====================================================
 "" AirLine settings
 "=====================================================
-" let g:airline_theme='badwolf'
-" let g:airline#extensions#tabline#enabled=1
-" let g:airline#extensions#tabline#formatter='unique_tail'
+let g:airline_theme='badwolf'
+let g:airline#extensions#tabline#formatter='unique_tail'
 " let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#formatter = 'default'
+" let g:airline#extensions#tabline#formatter = 'default'
+" let g:airline_theme='luna'
+
+" 切换 buffer
+nnoremap <C-N> :bn<CR> 
+nnoremap <C-P> :bp<CR> 
+
+" 关闭状态显示空白符号计数
+let g:airline#extensions#whitespace#enabled = 1 
+let g:airline#extensions#whitespace#symbol = '!' 
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
+
+  " unicode symbols
+  let g:airline_left_sep = '»'
+  let g:airline_left_sep = '▶'
+  let g:airline_right_sep = '«'
+  let g:airline_right_sep = '◀'
+  let g:airline_symbols.crypt = '🔒'
+  let g:airline_symbols.linenr = '☰'
+  let g:airline_symbols.linenr = '␊'
+  let g:airline_symbols.linenr = '␤'
+  let g:airline_symbols.linenr = '¶'
+  let g:airline_symbols.maxlinenr = ''
+  let g:airline_symbols.maxlinenr = '㏑'
+  let g:airline_symbols.branch = '⎇'
+  let g:airline_symbols.paste = 'ρ'
+  let g:airline_symbols.paste = 'Þ'
+  let g:airline_symbols.paste = '∥'
+  let g:airline_symbols.spell = 'Ꞩ'
+  let g:airline_symbols.notexists = 'Ɇ'
+  let g:airline_symbols.whitespace = 'Ξ'
+
+"  " powerline symbols
+"  let g:airline_left_sep = ''
+"  let g:airline_left_alt_sep = ''
+"  let g:airline_right_sep = ''
+"  let g:airline_right_alt_sep = ''
+"  let g:airline_symbols.branch = ''
+"  let g:airline_symbols.readonly = ''
+"  let g:airline_symbols.linenr = '☰'
+"  let g:airline_symbols.maxlinenr = ''
+
+
+
+"""""""""""" Start Powerline Settings """"""""""""""""
+
+" set guifont=Inconsolata\ for\ Powerline:h15
+set guifont=Source\ Code\ Pro\ for\ Powerline:h15
+let g:Powerline_symbols = 'fancy'
+set encoding=utf-8
+set t_Co=256
+set fillchars+=stl:\ ,stlnc:\
+set term=xterm-256color
+set termencoding=utf-8
+
+if has("gui_running")
+    let s:uname = system("uname")
+    if s:uname == "Darwin\n"
+        set guifont=Source\ Code\ Pro\ for\ Powerline:h15
+        colorscheme PaperColor              " set color scheme
+    endif
+endif
+
+
+""""""""""" END of PowerLine Settings """""""""""""""
+
 
 "=====================================================
 "" NERDTree settings
@@ -190,7 +266,6 @@ autocmd VimEnter * wincmd p
 map <C-t> :NERDTreeToggle<CR>
 " let NERDTreeShowBookmarks=1  " 开启Nerdtree时自动显示Bookmarks
 " 打开vim时如果没有文件自动打开NERDTree
-autocmd vimenter * if !argc()|NERDTree|endif
 "当NERDTree为剩下的唯一窗口时自动关闭
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 ""设置树的显示图标
@@ -380,4 +455,8 @@ let g:multi_cursor_next_key            = '<C-n>'
 let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
+
+" Git Fugitive
+autocmd QuickFixCmdPost *grep* cwindow
+
 
