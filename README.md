@@ -5,3 +5,4 @@ clone this repo to ~/.vim/, then
 
 ```shell
 ln -s ~/.vim/vimrc ~/.vimrc
+```
