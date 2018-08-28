@@ -35,13 +35,14 @@ call vundle#begin()
     Plugin 'bling/vim-airline'                  " Lean & mean status/tabline for vim
     Plugin 'vim-airline/vim-airline-themes'     " Themes for airline
     Plugin 'Lokaltog/powerline'                 " Powerline fonts plugin
-    Plugin 'fisadev/FixedTaskList.vim'          " Pending tasks list
     Plugin 'rosenfeld/conque-term'              " Consoles as buffers
     Plugin 'tpope/vim-surround'                 " Parentheses, brackets, quotes, XML tags, and more
     Plugin 'flazz/vim-colorschemes'             " Colorschemes
-    Plugin 'altercation/vim-colors-solarized'
-    Plugin 'kristijanhusak/vim-hybrid-material'
-    Plugin 'junegunn/seoul256.vim'
+    " Plugin 'altercation/vim-colors-solarized'
+    " Plugin 'lifepillar/vim-solarized8'
+    " Plugin 'kristijanhusak/vim-hybrid-material'
+    " Plugin 'junegunn/seoul256.vim'
+    Plugin 'morhetz/gruvbox'
 
     "-------------------=== Snippets support ===--------------------
     Plugin 'garbas/vim-snipmate'                " Snippets manager
@@ -51,7 +52,6 @@ call vundle#begin()
 
     "-------------------=== Languages support ===-------------------
     Plugin 'tpope/vim-commentary'               " Comment stuff out
-    Plugin 'mitsuhiko/vim-sparkup'              " Sparkup(XML/jinja/htlm-django/etc.) support
     Plugin 'Rykka/riv.vim'                      " ReStructuredText plugin
     " Plugin 'Valloric/YouCompleteMe'             " Autocomplete plugin
     Plugin 'Shougo/neocomplcache' 
@@ -79,7 +79,7 @@ filetype plugin indent on
 syntax enable                               " syntax highlight
 
 set t_Co=256                                " set 256 colors
-colorscheme wombat256mod                    " set color scheme
+" colorscheme wombat256mod                    " set color scheme
 
 set number                                  " show line numbers
 set ruler
@@ -109,12 +109,26 @@ set clipboard=unnamed                       " use system clipboard
 set exrc                                    " enable usage of additional .vimrc files from working directory
 set secure                                  " prohibit .vimrc files to execute shell, create files, etc...
 
-set background=dark
+syntax enable
+" set background=dark
 " colorscheme solarized
+" let g:solarized_termcolors=256
+" let g:solarized_contrast = "high" "high, low, normal
+" let g:solarized_visibility = 'high'
+" call togglebg#map("<F5>")
+
+" set background=dark
+" colorscheme solarized8_flat
+" let g:solarized_use16 = 1
+
 " colorscheme dracula
 " colorscheme hybrid_material
-let g:seoul256_background = 234 " 233 - 239(lightest)
-colorscheme seoul256
+" let g:seoul256_background = 233 " 233 - 239(lightest)
+" colorscheme seoul256
+" let g:dracula_italic = 1
+
+set background=dark
+colorscheme gruvbox
 
 " highlight current line
 au WinLeave * set nocursorline nocursorcolumn
@@ -170,7 +184,6 @@ let NERDTreeIgnore=['\.pyc$', '\.pyo$', '__pycache__$']     " Ignore files in NE
 let NERDTreeWinSize=40
 autocmd VimEnter * if !argc() | NERDTree | endif  " Load NERDTree only if vim is run without arguments
 " nmap " :NERDTreeToggle<CR>
-autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd p
 " let g:NERDTreeWinSize = 25 "设定 NERDTree 视窗大小
 " 开启/关闭nerdtree快捷键
@@ -212,23 +225,47 @@ let g:riv_disable_folding=1
 let g:pymode_python='python'
 let g:syntastic_python_python_exec='python'
 
+" warnings
+let g:pymode_warnings = 1
+
+let g:pymode_trim_whitespaces = 1
+let g:pymode_options = 1
+
 " rope
-let g:pymode_rope=0
-let g:pymode_rope_completion=0
-let g:pymode_rope_complete_on_dot=0
+let g:pymode_rope=1   "启用重构
+let g:pymode_rope_completion=1
+let g:pymode_rope_complete_on_dot=1
 let g:pymode_rope_auto_project=0
-let g:pymode_rope_enable_autoimport=0
+let g:pymode_rope_enable_autoimport=1
 let g:pymode_rope_autoimport_generate=0
 let g:pymode_rope_guess_project=0
+let g:pymode_rope_lookup_project = 0  "不在父目录下查找.ropeproject，能提升响应速度
+let g:pymode_rope_show_doc_bind = '<C-c>d' " 光标下单词查阅文档
+let g:pymode_rope_regenerate_on_write = 1 " 项目修改后重新生成缓存
+" <C-c>g跳转到定义处，同时新建竖直窗口打开
+let g:pymode_rope_goto_definition_bind = '<C-c>g'
+let g:pymode_rope_goto_definition_cmd = 'vnew'
+let g:pymode_rope_rename_bind = '<C-c>rr' " 重命名光标下的函数，方法，变量及类名
+let g:pymode_rope_rename_module_bind = '<C-c>r1r' " 重命名光标下的模块或包
 
-" documentation
-let g:pymode_doc=0
+
+"" documentation
+let g:pymode_doc=1
 let g:pymode_doc_bind='K'
 
 " lints
-let g:pymode_lint=0
+let g:pymode_lint=1
+let g:pymode_lint_on_fly = 0
+let g:pymode_lint_checkers = ['pyflakes', 'pep8']
+let g:pymode_lint_signs = 0
+"let g:pymode_lint_todo_symbol = 'WW'
+"let g:pymode_lint_comment_symbol = 'CC'
+"let g:pymode_lint_visual_symbol = 'RR'
+"let g:pymode_lint_error_symbol = 'EE'
+"let g:pymode_lint_info_symbol = 'II'
+"let g:pymode_lint_pyflakes_symbol = 'FF'
 
-" virtualenv
+
 let g:pymode_virtualenv=1
 
 " breakpoints
@@ -272,7 +309,7 @@ let g:pymode_indent=1
 
 " code running
 let g:pymode_run=1
-let g:pymode_run_bind='<F5>'
+let g:pymode_run_bind='<leader>r'
 
 " syntastic
 let g:syntastic_always_populate_loc_list=1
