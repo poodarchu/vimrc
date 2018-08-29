@@ -66,11 +66,21 @@ call vundle#begin()
     Plugin 'scrooloose/syntastic'               " Syntax checking plugin for Vim
 
     "-------------------=== 
-    Plugin 'tpope/vim-markdown'
+    " Plugin 'tpope/vim-markdown'
+    Plugin 'godlygeek/tabular'
+    Plugin 'plasticboy/vim-markdown'
     
+    "-------------------=== Code Format ===------------------------
+    Plugin 'google/vim-maktaba'
+    Plugin 'google/vim-codefmt'
+    " Also add Glaive, which is used to configure codefmt's maktaba flags. See
+    " " `:help :Glaive` for usage.
+    Plugin 'google/vim-glaive'
+
     Plugin 'mhinz/vim-startify'
 
 call vundle#end()                           " required
+call glaive#Install()
 
 filetype on
 filetype plugin on
@@ -459,4 +469,33 @@ let g:multi_cursor_quit_key            = '<Esc>'
 " Git Fugitive
 autocmd QuickFixCmdPost *grep* cwindow
 
+" Markdonw
+let g:vim_markdown_folding_disabled = 1
+" let g:vim_markdown_no_default_key_mappings = 1
+let g:vim_markdown_toc_autofit = 1
+set conceallevel=2
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+let g:vim_markdown_fenced_languages = ['python=py']
+let g:vim_markdown_anchorexpr = "'<<'.v:anchor.'>>'"
+let g:vim_markdown_math = 1
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_json_frontmatter = 1
+let g:vim_markdown_new_list_item_indent = 2
+let g:vim_markdown_autowrite = 1
+" let g:vim_markdown_auto_extension_ext = 'txt'
+
+
+" Google FMT
+augroup autoformat_settings
+    autocmd FileType bzl AutoFormatBuffer buildifier
+    autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+    autocmd FileType dart AutoFormatBuffer dartfmt
+    autocmd FileType go AutoFormatBuffer gofmt
+    autocmd FileType gn AutoFormatBuffer gn
+    autocmd FileType html,css,json AutoFormatBuffer js-beautify
+    autocmd FileType java AutoFormatBuffer google-java-format
+    autocmd FileType python AutoFormatBuffer yapf
+    " Alternative: autocmd FileType python AutoFormatBuffer autopep8
+augroup END
 
