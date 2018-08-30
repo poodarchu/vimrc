@@ -88,3 +88,5 @@ echo "${NORMAL}"
 
 wrapper
 vim +PluginInstall
+vim +PluginUpdate
+
