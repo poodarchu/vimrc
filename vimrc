@@ -35,7 +35,7 @@ call vundle#begin()
     "-------------------=== Other ===-------------------------------
     Plugin 'bling/vim-airline'                  " Lean & mean status/tabline for vim
     Plugin 'vim-airline/vim-airline-themes'     " Themes for airline
-    Plugin 'Lokaltog/powerline'                 " Powerline fonts plugin
+    Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}              " Powerline fonts plugin
     Plugin 'rosenfeld/conque-term'              " Consoles as buffers
     Plugin 'tpope/vim-surround'                 " Parentheses, brackets, quotes, XML tags, and more
     Plugin 'flazz/vim-colorschemes'             " Colorschemes
@@ -260,6 +260,8 @@ if has("gui_running")
     endif
 endif
 
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
+set laststatus=2
 
 """"""""""" END of PowerLine Settings """""""""""""""
 
@@ -292,6 +294,7 @@ let NERDTreeDirArrows = 1
 let NERDTreeIgnore = ['\.pyc$', '\.swp', '\.swo', '\.vscode', '__pycache__']  
 let g:NERDTreeWinPos = "right"
 nmap <leader>j :NERDTreeFind<CR>
+map <F2> :NERDTreeToggle<CR>
 
 "=====================================================
 "" SnipMate settings
@@ -308,6 +311,7 @@ let g:riv_disable_folding=1
 "=====================================================
 
 " python executables for different plugins
+
 let g:pymode_python='python'
 let g:syntastic_python_python_exec='python'
 
@@ -322,12 +326,12 @@ let g:pymode_rope=1   "启用重构
 let g:pymode_rope_completion=1
 let g:pymode_rope_complete_on_dot=1
 let g:pymode_rope_auto_project=0
-let g:pymode_rope_enable_autoimport=1
+let g:pymode_rope_enable_autoimport=0
 let g:pymode_rope_autoimport_generate=0
 let g:pymode_rope_guess_project=0
-let g:pymode_rope_lookup_project = 0  "不在父目录下查找.ropeproject，能提升响应速度
+let g:pymode_rope_lookup_project = 0 "不在父目录下查找.ropeproject，能提升响应速度
 let g:pymode_rope_show_doc_bind = '<C-c>d' " 光标下单词查阅文档
-let g:pymode_rope_regenerate_on_write = 1 " 项目修改后重新生成缓存
+let g:pymode_rope_regenerate_on_write = 0 " 项目修改后重新生成缓存
 " <C-c>g跳转到定义处，同时新建竖直窗口打开
 let g:pymode_rope_goto_definition_bind = '<C-c>g'
 let g:pymode_rope_goto_definition_cmd = 'vnew'
@@ -340,10 +344,11 @@ let g:pymode_doc=1
 let g:pymode_doc_bind='K'
 
 " lints
-let g:pymode_lint=1
+let g:pymode_lint=0
 let g:pymode_lint_on_fly = 0
 let g:pymode_lint_checkers = ['pyflakes', 'pep8']
 let g:pymode_lint_signs = 0
+let g:pymode_lint_cwindow = 0
 let g:pymode_lint_todo_symbol = 'WW'
 let g:pymode_lint_comment_symbol = 'CC'
 let g:pymode_lint_visual_symbol = 'RR'
@@ -382,9 +387,9 @@ let g:pymode_syntax_docstrings=g:pymode_syntax_all
 augroup vimrc_autocmds
     autocmd!
     autocmd FileType python,rst,c,cpp highlight Excess ctermbg=DarkGrey guibg=Black
-    autocmd FileType python,rst,c,cpp match Excess /\%81v.*/
+    autocmd FileType python,rst,c,cpp match Excess /\%80v.*/
     autocmd FileType python,rst,c,cpp set nowrap
-    autocmd FileType python,rst,c,cpp set colorcolumn=100
+    autocmd FileType python,rst,c,cpp set colorcolumn=80
 augroup END
 
 " code folding
@@ -394,7 +399,7 @@ let g:pymode_folding=0
 let g:pymode_indent=1
 
 " code running
-let g:pymode_run=1
+let g:pymode_run=0
 let g:pymode_run_bind='<leader>r'
 
 " syntastic
