@@ -1,13 +1,11 @@
 # vimrc
 my customized vimrc, using vundle to manage.
 
-clone this repo to ~/.vim/, then 
+clone this repo , then 
 
 ```shell
-ln -s ~/.vim/vimrc ~/.vimrc
+sh setup.sh
 ```
-
 Ignore warnings firstly, type
-:BundleInstall
 
 then you'll be free to use it.
