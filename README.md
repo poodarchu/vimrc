@@ -12,6 +12,7 @@ then you'll be free to use it.
 
 
 **some cheatsheet**
+```
 leader key: \
 commment: <leaderkey>+'cc'
 uncomment: <leaderkey>+'c '
@@ -31,3 +32,4 @@ doc begin: gg
 buffer: <F9> <F10>
 vsplit xxxx.py xxx.py
 next buffer: ctrl + 'ww' or ctrl + 'w' + lrtb
+```
