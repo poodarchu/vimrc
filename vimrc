@@ -35,7 +35,7 @@ call vundle#begin()
     "-------------------=== Other ===-------------------------------
     Plugin 'bling/vim-airline'                  " Lean & mean status/tabline for vim
     Plugin 'vim-airline/vim-airline-themes'     " Themes for airline
-    Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}              " Powerline fonts plugin
+    Plugin 'Lokaltog/powerline'                 " {'rtp': 'powerline/bindings/vim/'}   Powerline fonts plugin
     Plugin 'rosenfeld/conque-term'              " Consoles as buffers
     Plugin 'tpope/vim-surround'                 " Parentheses, brackets, quotes, XML tags, and more
     Plugin 'flazz/vim-colorschemes'             " Colorschemes
@@ -259,9 +259,6 @@ if has("gui_running")
         colorscheme PaperColor              " set color scheme
     endif
 endif
-
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
-set laststatus=2
 
 """"""""""" END of PowerLine Settings """""""""""""""
 
