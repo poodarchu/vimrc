@@ -62,7 +62,7 @@ call vundle#begin()
     Plugin 'terryma/vim-multiple-cursors'
 
     "-------------------=== Python  ===-----------------------------
-    Plugin 'klen/python-mode'                   " Python mode (docs, refactor, lints...)
+    " Plugin 'klen/python-mode'                   " Python mode (docs, refactor, lints...)
     Plugin 'scrooloose/syntastic'               " Syntax checking plugin for Vim
 
     "-------------------=== 
@@ -498,7 +498,7 @@ augroup autoformat_settings
     " autocmd FileType gn AutoFormatBuffer gn
     " autocmd FileType html,css,json AutoFormatBuffer js-beautify
     " autocmd FileType java AutoFormatBuffer google-java-format
-    autocmd FileType python AutoFormatBuffer yapf
+    " autocmd FileType python AutoFormatBuffer yapf
     " Alternative: autocmd FileType python AutoFormatBuffer autopep8
 augroup END
 
