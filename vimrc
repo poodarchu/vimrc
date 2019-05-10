@@ -62,7 +62,7 @@ call vundle#begin()
     Plugin 'terryma/vim-multiple-cursors'
 
     "-------------------=== Python  ===-----------------------------
-    " Plugin 'klen/python-mode'                   " Python mode (docs, refactor, lints...)
+    Plugin 'klen/python-mode'                   " Python mode (docs, refactor, lints...)
     Plugin 'scrooloose/syntastic'               " Syntax checking plugin for Vim
 
     "-------------------=== 
@@ -82,6 +82,9 @@ call vundle#begin()
 
 call vundle#end()                           " required
 call glaive#Install()
+
+" Optional: Enable codefmt's default mappings on the <Leader>= prefix.
+Glaive codefmt plugin[mappings]
 
 filetype on
 filetype plugin on
@@ -309,8 +312,8 @@ let g:riv_disable_folding=1
 
 " python executables for different plugins
 
-let g:pymode_python='python'
-let g:syntastic_python_python_exec='python'
+let g:pymode_python='python3'
+let g:syntastic_python_python_exec='/path/to/your/python'
 
 " warnings
 let g:pymode_warnings = 1
@@ -498,7 +501,7 @@ augroup autoformat_settings
     " autocmd FileType gn AutoFormatBuffer gn
     " autocmd FileType html,css,json AutoFormatBuffer js-beautify
     " autocmd FileType java AutoFormatBuffer google-java-format
-    " autocmd FileType python AutoFormatBuffer yapf
+    autocmd FileType python AutoFormatBuffer yapf
     " Alternative: autocmd FileType python AutoFormatBuffer autopep8
 augroup END
 

@@ -6,6 +6,12 @@ clone this repo , then
 ```shell
 sh setup.sh
 ```
+Follow the above step, you need to manually change pymode_exec_path in ~/.vimrc
+for example:
+```
+let g:syntastic_python_python_exec='/path/to/your/python'
+```
+
 Ignore warnings, type Enter.
 
 then you'll be free to use it.
