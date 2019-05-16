@@ -313,7 +313,11 @@ let g:riv_disable_folding=1
 " python executables for different plugins
 
 let g:pymode_python='python3'
+<<<<<<< Updated upstream
 let g:syntastic_python_python_exec='/path/to/your/python'
+=======
+let g:syntastic_python_python_exec='/Users/poodarchu/Libs/anaconda3/bin/python'
+>>>>>>> Stashed changes
 
 " warnings
 let g:pymode_warnings = 1
@@ -364,7 +368,7 @@ let g:pymode_breakpoint=1
 let g:pymode_breakpoint_key='<leader>b'
 
 " syntax highlight
-let g:pymode_syntax=1
+let g:pymode_syntax=0
 let g:pymode_syntax_slow_sync=1
 let g:pymode_syntax_all=1
 let g:pymode_syntax_print_as_function=g:pymode_syntax_all
@@ -449,11 +453,11 @@ imap <C-l> <Plug>(neocomplcache_snippets_force_jump)
 smap <C-l> <Plug>(neocomplcache_snippets_force_jump)
 
 " Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType c setlocal omnifunc=ccomplete#Complete
+" autocmd FileType c setlocal omnifunc=ccomplete#Complete
 if !exists('g:neocomplcache_omni_patterns')
     let g:neocomplcache_omni_patterns = {}
 endif
@@ -509,3 +513,5 @@ augroup END
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+
+au bufnewfile * 0r ~/.vim/sh_header.temp
