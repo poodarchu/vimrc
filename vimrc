@@ -313,11 +313,7 @@ let g:riv_disable_folding=1
 " python executables for different plugins
 
 let g:pymode_python='python3'
-<<<<<<< Updated upstream
 let g:syntastic_python_python_exec='/path/to/your/python'
-=======
-let g:syntastic_python_python_exec='/Users/poodarchu/Libs/anaconda3/bin/python'
->>>>>>> Stashed changes
 
 " warnings
 let g:pymode_warnings = 1
@@ -505,7 +501,7 @@ augroup autoformat_settings
     " autocmd FileType gn AutoFormatBuffer gn
     " autocmd FileType html,css,json AutoFormatBuffer js-beautify
     " autocmd FileType java AutoFormatBuffer google-java-format
-    autocmd FileType python AutoFormatBuffer yapf
+    " autocmd FileType python AutoFormatBuffer yapf
     " Alternative: autocmd FileType python AutoFormatBuffer autopep8
 augroup END
 
@@ -514,4 +510,4 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
-au bufnewfile * 0r ~/.vim/sh_header.temp
+" au bufnewfile * 0r ~/.vim/sh_header.temp
