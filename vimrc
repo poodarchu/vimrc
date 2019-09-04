@@ -312,7 +312,7 @@ let g:riv_disable_folding=1
 
 " python executables for different plugins
 
-let g:pymode_python='python3'
+let g:pymode_python='python'
 let g:syntastic_python_python_exec='/path/to/your/python'
 
 " warnings
@@ -322,7 +322,7 @@ let g:pymode_trim_whitespaces = 1
 let g:pymode_options = 1
 
 " rope
-let g:pymode_rope=1   "启用重构
+let g:pymode_rope=0   "启用重构
 let g:pymode_rope_completion=1
 let g:pymode_rope_complete_on_dot=1
 let g:pymode_rope_auto_project=0
