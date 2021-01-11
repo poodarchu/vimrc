@@ -1,41 +1,29 @@
-# vimrc
-my customized vimrc, using vundle to manage plugins.
+# vimrc based on NeoVim
 
-clone this repo , then 
+## Get Started
 
-```shell
-sh setup.sh
+### 1. Install NeoVim
+
+AppImage ("universal" Linux package)
+The Releases page provides an AppImage that runs on most Linux systems. No installation is needed, just download nvim.appimage and run it. (It might not work if your Linux distribution is more than 4 years old.)
 ```
-Follow the above step, you need to manually change pymode_exec_path in ~/.vimrc
-for example:
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod u+x nvim.appimage
+./nvim.appimage
 ```
-let g:syntastic_python_python_exec='/path/to/your/python'
+If the ./nvim.appimage command fails, try:
+
+```
+./nvim.appimage --appimage-extract
+./squashfs-root/AppRun --version
 ```
 
-Ignore warnings, type Enter.
-
-then you'll be free to use it.
-
-
-**some cheatsheet**
+# Optional: exposing nvim globally
 ```
-leader key: \
-commment: <leaderkey>+'cc'
-uncomment: <leaderkey>+'c '
-undo: u
-insert a line above: O
-insert a line below: o
-exit to command mode: jj or kk 
-pdb: <leaderkey>+'b'
-visual mode: v
-select a block: hjkl
-intent: > <
-copy: y
-past: p
-delete: x D dd
-doc end: G
-doc begin: gg
-buffer: <F9> <F10>
-vsplit xxxx.py xxx.py
-next buffer: ctrl + 'ww' or ctrl + 'w' + lrtb
+mv squashfs-root / && ln -s /squashfs-root/AppRun /usr/bin/nvim
+nvim
 ```
+
+### 2. add init.vim to ~/.config/nvim/
+
+### 3. get into the editor and execute ```PlugInstall```
