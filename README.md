@@ -1,4 +1,4 @@
-# vimrc based on NeoVim
+# Vim8+VimPlug
 
 ## Get Started
 
