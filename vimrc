@@ -3,11 +3,6 @@
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
-" Make sure you use single quotes
-
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'zchee/deoplete-jedi'
-
   Plug 'vim-airline/vim-airline'
 
   Plug 'jiangmiao/auto-pairs'
@@ -16,8 +11,6 @@ call plug#begin('~/.vim/plugged')
 
   Plug 'sbdchd/neoformat'
 
-  Plug 'davidhalter/jedi-vim'
-
   Plug 'scrooloose/nerdtree'
 
   Plug 'neomake/neomake'
@@ -25,8 +18,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'terryma/vim-multiple-cursors'
 
   Plug 'machakann/vim-highlightedyank'
-
-  Plug 'tmhedberg/SimpylFold'
 
   Plug 'morhetz/gruvbox'
 
@@ -64,11 +55,6 @@ let g:neoformat_basic_format_retab = 1
 " Enable trimmming of trailing whitespace
 let g:neoformat_basic_format_trim = 1
 
-" disable autocompletion, cause we use deoplete for completion
-let g:jedi#completions_enabled = 0
-" open the go-to function in split, not another buffer
-let g:jedi#use_splits_not_buffers = "right"
-
 let g:neomake_python_enabled_makers = ['pylint']
 call neomake#configure#automake('nrwi', 500)
 
@@ -77,4 +63,3 @@ let g:highlightedyank_highlight_duration = 1000 " 高亮持续时间为 1000 毫
 
 colorscheme gruvbox
 set background=dark " 或者 set background=light
-
