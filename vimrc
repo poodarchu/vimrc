@@ -300,6 +300,7 @@ map <F2> :NERDTreeToggle<CR>
 "" SnipMate settings
 "=====================================================
 let g:snippets_dir='~/.vim/vim-snippets/snippets'
+let g:snipMate = { 'snippet_version' : 1 }
 
 "=====================================================
 "" Riv.vim settings
@@ -312,7 +313,7 @@ let g:riv_disable_folding=1
 
 " python executables for different plugins
 
-let g:pymode_python='python'
+let g:pymode_python='python3`'
 let g:syntastic_python_python_exec='/path/to/your/python'
 
 " warnings
