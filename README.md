@@ -1,11 +1,22 @@
 # vimrc
 my customized vimrc, using vundle to manage plugins.
 
-clone this repo , then 
+## Installation
 
+1. check your Vim version.
+
+make sure that your vim is only compiled with python3 support. Otherwise, python-mode cannot work properly.
+
+```shell
+# optional
+conda install -c conda-forge/label/cf202003 vim
+```
+
+clone this repo , then 
 ```shell
 sh setup.sh
 ```
+
 Follow the above step, you need to manually change pymode_exec_path in ~/.vimrc
 for example:
 ```

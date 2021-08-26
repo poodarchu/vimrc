@@ -313,8 +313,10 @@ let g:riv_disable_folding=1
 
 " python executables for different plugins
 
-let g:pymode_python='python3`'
-let g:syntastic_python_python_exec='/path/to/your/python'
+let g:pymode = 1
+
+let g:pymode_python='python3'
+let g:syntastic_python_python_exec='~/libs/miniconda3/bin/python3'
 
 " warnings
 let g:pymode_warnings = 1
@@ -323,7 +325,7 @@ let g:pymode_trim_whitespaces = 1
 let g:pymode_options = 1
 
 " rope
-let g:pymode_rope=0   "启用重构
+let g:pymode_rope=1   "启用重构
 let g:pymode_rope_completion=1
 let g:pymode_rope_complete_on_dot=1
 let g:pymode_rope_auto_project=0
@@ -345,7 +347,7 @@ let g:pymode_doc=1
 let g:pymode_doc_bind='K'
 
 " lints
-let g:pymode_lint=0
+let g:pymode_lint=1
 let g:pymode_lint_on_fly = 0
 let g:pymode_lint_checkers = ['pyflakes', 'pep8']
 let g:pymode_lint_signs = 0
@@ -365,7 +367,7 @@ let g:pymode_breakpoint=1
 let g:pymode_breakpoint_key='<leader>b'
 
 " syntax highlight
-let g:pymode_syntax=0
+let g:pymode_syntax=1
 let g:pymode_syntax_slow_sync=1
 let g:pymode_syntax_all=1
 let g:pymode_syntax_print_as_function=g:pymode_syntax_all
@@ -394,13 +396,13 @@ augroup vimrc_autocmds
 augroup END
 
 " code folding
-let g:pymode_folding=0
+let g:pymode_folding=1
 
 " pep8 indents
 let g:pymode_indent=1
 
 " code running
-let g:pymode_run=0
+let g:pymode_run=1
 let g:pymode_run_bind='<leader>r'
 
 " syntastic
