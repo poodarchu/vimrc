@@ -325,7 +325,7 @@ let g:pymode_trim_whitespaces = 1
 let g:pymode_options = 1
 
 " rope
-let g:pymode_rope=1   "启用重构
+let g:pymode_rope=0   "启用重构
 let g:pymode_rope_completion=1
 let g:pymode_rope_complete_on_dot=1
 let g:pymode_rope_auto_project=0
@@ -347,7 +347,7 @@ let g:pymode_doc=1
 let g:pymode_doc_bind='K'
 
 " lints
-let g:pymode_lint=1
+let g:pymode_lint=0
 let g:pymode_lint_on_fly = 0
 let g:pymode_lint_checkers = ['pyflakes', 'pep8']
 let g:pymode_lint_signs = 0
@@ -360,7 +360,7 @@ let g:pymode_lint_info_symbol = 'II'
 let g:pymode_lint_pyflakes_symbol = 'FF'
 
 
-let g:pymode_virtualenv=1
+let g:pymode_virtualenv=0
 
 " breakpoints
 let g:pymode_breakpoint=1
