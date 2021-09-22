@@ -28,48 +28,24 @@ call vundle#begin()
 
     "-------------------=== Code/Project navigation ===-------------
     Plugin 'scrooloose/nerdtree'                " Project and file navigation
-    " Plugin 'majutsushi/tagbar'                  " Class/module browser
-    Plugin 'kien/ctrlp.vim'                     " Fast transitions on project files
-    Plugin 'tpope/vim-fugitive'
 
     "-------------------=== Other ===-------------------------------
     Plugin 'bling/vim-airline'                  " Lean & mean status/tabline for vim
     Plugin 'vim-airline/vim-airline-themes'     " Themes for airline
     Plugin 'Lokaltog/powerline'                 " {'rtp': 'powerline/bindings/vim/'}   Powerline fonts plugin
-    Plugin 'rosenfeld/conque-term'              " Consoles as buffers
     Plugin 'tpope/vim-surround'                 " Parentheses, brackets, quotes, XML tags, and more
     Plugin 'flazz/vim-colorschemes'             " Colorschemes
-    " Plugin 'altercation/vim-colors-solarized'
-    " Plugin 'lifepillar/vim-solarized8'
-    " Plugin 'kristijanhusak/vim-hybrid-material'
-    " Plugin 'junegunn/seoul256.vim'
     Plugin 'morhetz/gruvbox'
-
-    "-------------------=== Snippets support ===--------------------
-    Plugin 'garbas/vim-snipmate'                " Snippets manager
-    Plugin 'MarcWeber/vim-addon-mw-utils'       " dependencies #1
-    Plugin 'tomtom/tlib_vim'                    " dependencies #2
-    Plugin 'honza/vim-snippets'                 " snippets repo
 
     "-------------------=== Languages support ===-------------------
     Plugin 'tpope/vim-commentary'               " Comment stuff out
-    Plugin 'Rykka/riv.vim'                      " ReStructuredText plugin
-    " Plugin 'Valloric/YouCompleteMe'             " Autocomplete plugin
     Plugin 'Shougo/neocomplcache' 
-    " Plugin 'Raimondi/delimitMate'
     Plugin 'scrooloose/nerdcommenter'
-    Plugin 'ervandew/supertab'
-    Plugin 'terryma/vim-multiple-cursors'
 
     "-------------------=== Python  ===-----------------------------
     Plugin 'klen/python-mode'                   " Python mode (docs, refactor, lints...)
     Plugin 'scrooloose/syntastic'               " Syntax checking plugin for Vim
 
-    "-------------------=== 
-    " Plugin 'tpope/vim-markdown'
-    Plugin 'godlygeek/tabular'
-    Plugin 'plasticboy/vim-markdown'
-    
     "-------------------=== Code Format ===------------------------
     Plugin 'google/vim-maktaba'
     Plugin 'google/vim-codefmt'
@@ -274,20 +250,20 @@ let NERDTreeWinSize=40
 autocmd VimEnter * if !argc() | NERDTree | endif  " Load NERDTree only if vim is run without arguments
 " nmap " :NERDTreeToggle<CR>
 autocmd VimEnter * wincmd p
-" let g:NERDTreeWinSize = 25 "设定 NERDTree 视窗大小
+" let g:NERDTreeWinSize = 35 "设定 NERDTree 视窗大小
 " 开启/关闭nerdtree快捷键
 map <C-t> :NERDTreeToggle<CR>
 " let NERDTreeShowBookmarks=1  " 开启Nerdtree时自动显示Bookmarks
 " 打开vim时如果没有文件自动打开NERDTree
-"当NERDTree为剩下的唯一窗口时自动关闭
+" 当NERDTree为剩下的唯一窗口时自动关闭
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-""设置树的显示图标
+"设置树的显示图标
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let NERDTreeIgnore = ['\.pyc$']  " 过滤所有.pyc文件不显示
 let g:NERDTreeShowLineNumbers=1  " 是否显示行号
 let g:NERDTreeHidden=0     "不显示隐藏文件
-""Making it prettier
+" Making it prettier
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 " 过滤: 所有指定文件和文件夹不显示
@@ -297,23 +273,10 @@ nmap <leader>j :NERDTreeFind<CR>
 map <F2> :NERDTreeToggle<CR>
 
 "=====================================================
-"" SnipMate settings
-"=====================================================
-let g:snippets_dir='~/.vim/vim-snippets/snippets'
-let g:snipMate = { 'snippet_version' : 1 }
-
-"=====================================================
-"" Riv.vim settings
-"=====================================================
-let g:riv_disable_folding=1
-
-"=====================================================
 "" Python settings
 "=====================================================
 
 " python executables for different plugins
-
-let g:pymode = 1
 
 let g:pymode_python='python3'
 let g:syntastic_python_python_exec='~/libs/miniconda3/bin/python3'
@@ -349,15 +312,15 @@ let g:pymode_doc_bind='K'
 " lints
 let g:pymode_lint=0
 let g:pymode_lint_on_fly = 0
-let g:pymode_lint_checkers = ['pyflakes', 'pep8']
+let g:pymode_lint_checkers = ['flake8', ]
 let g:pymode_lint_signs = 0
 let g:pymode_lint_cwindow = 0
-let g:pymode_lint_todo_symbol = 'WW'
-let g:pymode_lint_comment_symbol = 'CC'
-let g:pymode_lint_visual_symbol = 'RR'
-let g:pymode_lint_error_symbol = 'EE'
-let g:pymode_lint_info_symbol = 'II'
-let g:pymode_lint_pyflakes_symbol = 'FF'
+let g:pymode_lint_todo_symbol = 'T'
+let g:pymode_lint_comment_symbol = 'C'
+let g:pymode_lint_visual_symbol = 'V'
+let g:pymode_lint_error_symbol = 'E'
+let g:pymode_lint_info_symbol = 'I'
+let g:pymode_lint_pyflakes_symbol = 'F'
 
 
 let g:pymode_virtualenv=0
@@ -367,9 +330,9 @@ let g:pymode_breakpoint=1
 let g:pymode_breakpoint_key='<leader>b'
 
 " syntax highlight
-let g:pymode_syntax=1
+let g:pymode_syntax=0
 let g:pymode_syntax_slow_sync=1
-let g:pymode_syntax_all=1
+let g:pymode_syntax_all=0
 let g:pymode_syntax_print_as_function=g:pymode_syntax_all
 let g:pymode_syntax_highlight_async_await=g:pymode_syntax_all
 let g:pymode_syntax_highlight_equal_operator=g:pymode_syntax_all
@@ -390,19 +353,19 @@ let g:pymode_syntax_docstrings=g:pymode_syntax_all
 augroup vimrc_autocmds
     autocmd!
     autocmd FileType python,rst,c,cpp highlight Excess ctermbg=DarkGrey guibg=Black
-    autocmd FileType python,rst,c,cpp match Excess /\%80v.*/
+    autocmd FileType python,rst,c,cpp match Excess /\%120v.*/
     autocmd FileType python,rst,c,cpp set nowrap
-    autocmd FileType python,rst,c,cpp set colorcolumn=80
+    autocmd FileType python,rst,c,cpp set colorcolumn=120
 augroup END
 
 " code folding
-let g:pymode_folding=1
+let g:pymode_folding=0
 
 " pep8 indents
 let g:pymode_indent=1
 
 " code running
-let g:pymode_run=1
+let g:pymode_run=0
 let g:pymode_run_bind='<leader>r'
 
 " syntastic
@@ -413,10 +376,10 @@ let g:syntastic_check_on_wq=0
 let g:syntastic_aggregate_errors=1
 let g:syntastic_loc_list_height=5
 let g:syntastic_error_symbol='X'
-let g:syntastic_style_error_symbol='X'
-let g:syntastic_warning_symbol='x'
-let g:syntastic_style_warning_symbol='x'
-let g:syntastic_python_checkers=['flake8', 'pydocstyle', 'python']
+let g:syntastic_style_error_symbol='!x'
+let g:syntastic_warning_symbol='W'
+let g:syntastic_style_warning_symbol='!w'
+let g:syntastic_python_checkers=['flake8', ]
 
 " NERD Commenter
 " Add spaces after comment delimiters by default
@@ -437,14 +400,23 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 
 " NeoComplCache
-let g:neocomplcache_enable_at_startup=1
-" let g:neoComplcache_disableautocomplete=1
+let g:neocomplcache_enable_at_startup = 1
+let g:neoComplcache_disableautocomplete = 0
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_smart_case=1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_ignore_case = 1
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+let g:neocomplcache_enable_auto_select = 1
+let g:neocomplcache_enable_auto_delimiter = 0
+let g:neocomplcache_enable_fuzzy_completion = 0
+
 set completeopt-=preview
+
+if !exists('g:neocomplcache_wildcard_characters')
+    let g:neocomplcache_wildcard_characters = {}
+endif
 
 imap <C-k> <Plug>(neocomplcache_snippets_force_expand)
 smap <C-k> <Plug>(neocomplcache_snippets_force_expand)
@@ -457,42 +429,17 @@ smap <C-l> <Plug>(neocomplcache_snippets_force_jump)
 " autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 " autocmd FileType c setlocal omnifunc=ccomplete#Complete
+
 if !exists('g:neocomplcache_omni_patterns')
     let g:neocomplcache_omni_patterns = {}
 endif
 let g:neocomplcache_omni_patterns.erlang = '[a-zA-Z]\|:'
 
-
-" Multi Cursor
-let g:multi_cursor_use_default_mapping=0
-" Default mapping
-let g:multi_cursor_start_word_key      = '<C-n>'
-let g:multi_cursor_select_all_word_key = '<A-n>'
-let g:multi_cursor_start_key           = 'g<C-n>'
-let g:multi_cursor_select_all_key      = 'g<A-n>'
-let g:multi_cursor_next_key            = '<C-n>'
-let g:multi_cursor_prev_key            = '<C-p>'
-let g:multi_cursor_skip_key            = '<C-x>'
-let g:multi_cursor_quit_key            = '<Esc>'
-
-" Git Fugitive
-autocmd QuickFixCmdPost *grep* cwindow
-
-" Markdonw
-let g:vim_markdown_folding_disabled = 1
-" let g:vim_markdown_no_default_key_mappings = 1
-let g:vim_markdown_toc_autofit = 1
-set conceallevel=2
-let g:tex_conceal = ""
-let g:vim_markdown_math = 1
-let g:vim_markdown_fenced_languages = ['python=py']
-let g:vim_markdown_anchorexpr = "'<<'.v:anchor.'>>'"
-let g:vim_markdown_math = 1
-let g:vim_markdown_frontmatter = 1
-let g:vim_markdown_json_frontmatter = 1
-let g:vim_markdown_new_list_item_indent = 2
-let g:vim_markdown_autowrite = 1
-" let g:vim_markdown_auto_extension_ext = 'txt'
+" use close_popup for e.g. pythoncomplete.vim's subprocess.os.
+" dot candidate can not auto popup in next string after dot.
+" without ."\<C-h>"
+inoremap <expr> <C-h> neocomplcache#smart_close_popup()
+inoremap <expr> <BS>  neocomplcache#smart_close_popup()."\<C-h>"
 
 
 " Google FMT
@@ -512,5 +459,3 @@ augroup END
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
-
-" au bufnewfile * 0r ~/.vim/sh_header.temp
