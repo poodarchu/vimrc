@@ -2,7 +2,8 @@
 For better and seemless user experience, please consider use the new NeoVim-based config here:
 https://github.com/poodarchu/dotfiles
 
-===============
+-------------------------
+
 # vimrc
 my customized vimrc, using vundle to manage plugins.
 
